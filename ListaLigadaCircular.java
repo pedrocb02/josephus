@@ -1,18 +1,20 @@
 /**
- * ListaLigadaSimples. Ed para Lista Ligada simples
+ * ListaLigadaCircular. Ed para Lista Ligada circular
  * 
- * @author Julio Arakaki 
- * @version 1.0 2023/05/15
+ * @author Ana Paula Barros de Jesus
+ * @author Pedro Cione Barbosa 
+ * @author Vitor Seiji Colombo Nishida
+ * @version 1.0
  */
-public class ListaLigadaSimples<T> {
+public class ListaLigadaCircular<T> {
     No inicio, fim;
     int qtdNos;
 
     /**
-     * ListaLigadaSimples Construtor
+     * ListaLigadaCircular Construtor
      *
      */
-    public ListaLigadaSimples(){
+    public ListaLigadaCircular(){
         setInicio(null);
         setFim(null);
         setQtdNos(0);
@@ -96,6 +98,7 @@ public class ListaLigadaSimples<T> {
         if(estaVazia()){
             setInicio(novo);
             setFim(novo);
+            novo.setProximo(novo);
         }
         else{
             novo.setProximo(inicio);
@@ -115,6 +118,7 @@ public class ListaLigadaSimples<T> {
         if (estaVazia()){
             setInicio(novo);
             setFim(novo);
+            novo.setProximo(novo);
         }
         else{
             getFim().setProximo(novo);
@@ -141,6 +145,7 @@ public class ListaLigadaSimples<T> {
                 aux = getInicio();
                 setInicio(aux.getProximo());
                 aux.setProximo(null);
+                getFim().setProximo(getInicio());
             }
             setQtdNos(getQtdNos() - 1);
             obj = (T)aux.getConteudo();
@@ -169,9 +174,10 @@ public class ListaLigadaSimples<T> {
                 while(ant.getProximo() != fim){
                     ant = ant.getProximo();
                 }
-                ant.setProximo(null);
+                ant.setProximo(inicio);
                 aux = fim;
                 setFim(ant);
+                getFim().setProximo(getInicio());
             }
             setQtdNos(getQtdNos() - 1);
             obj = (T)aux.getConteudo();           
@@ -205,12 +211,10 @@ public class ListaLigadaSimples<T> {
         No aux = getInicio();
         int contador = 1;
         if (! estaVazia() ){
-            while (temp.getProximo() != null){ // Pega todos os elementos
-                if (temp.getProximo() != null)
-                    // Separa com virgula
-                    System.out.println(temp.getConteudo());
-                else
+            while (contador <= getQtdNos()){ // Pega todos os elementos
+                System.out.println(temp.getConteudo());
                 temp = temp.getProximo();
+                contador++;
             }
         }
         
