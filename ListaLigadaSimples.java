@@ -93,13 +93,14 @@ public class ListaLigadaSimples<T> {
     public void inserirInicio(T elem) {
         No novo = new No(elem); //1
 
-        if (estaVazia()){
+        if(estaVazia()){
             setInicio(novo);
             setFim(novo);
         }
         else{
             novo.setProximo(inicio);
             setInicio(novo);
+            getFim().setProximo(inicio);
         }
         setQtdNos(getQtdNos() + 1);
     }
@@ -118,6 +119,7 @@ public class ListaLigadaSimples<T> {
         else{
             getFim().setProximo(novo);
             setFim(novo);
+            getFim().setProximo(inicio);
         }
         setQtdNos(getQtdNos() + 1);
     }
@@ -185,7 +187,7 @@ public class ListaLigadaSimples<T> {
         int contador = 1;
         if (! estaVazia() ){
             while (contador <= getQtdNos()){ // Pega todos os elementos
-                if (temp.getProximo() != null)
+                if(temp.getProximo() != null)
                     // Separa com virgula
                     valores += temp.getConteudo() + ","; 
                 else
@@ -197,5 +199,20 @@ public class ListaLigadaSimples<T> {
         }
         valores += "]";
         return valores;
+    }
+    public void mostrar(){
+        No temp = getInicio();
+        No aux = getInicio();
+        int contador = 1;
+        if (! estaVazia() ){
+            while (temp.getProximo() != null){ // Pega todos os elementos
+                if (temp.getProximo() != null)
+                    // Separa com virgula
+                    System.out.println(temp.getConteudo());
+                else
+                temp = temp.getProximo();
+            }
+        }
+        
     }
 }
