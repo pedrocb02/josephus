@@ -184,6 +184,45 @@ public class ListaLigadaCircular<T> {
         }
         return obj;
     }
+    
+    /*
+     * removerMeio
+     * 
+     * @Objeto removido
+     */
+    public T removerMeio(No atual){
+        No ant = getInicio();
+        No aux = getInicio();
+        T obj = null;
+        if(!estaVazia()){
+            if(getInicio() == getFim()){
+                setInicio(null);
+                setFim(null);
+            }
+            else{
+                while(true){
+                    ant = ant.getProximo();
+                    if(ant == atual){
+                        if(ant == getInicio()){
+                            aux.setProximo(getFim());
+                            break;
+                        }
+                        if(ant == getFim()){
+                            aux.setProximo(getInicio());
+                            break;
+                        }
+                        aux.setProximo(atual.getProximo());
+                        break; 
+                    }
+                    aux = aux.getProximo();
+                }
+
+            }
+            setQtdNos(getQtdNos() - 1);
+            obj = (T)aux.getConteudo();
+        }
+        return obj;
+    }
     /**
      * toString monta lista dos elementos
      */
@@ -210,11 +249,13 @@ public class ListaLigadaCircular<T> {
         No temp = getInicio();
         No aux = getInicio();
         int contador = 1;
-        if (! estaVazia() ){
-            while (contador <= getQtdNos()){ // Pega todos os elementos
+        if (!estaVazia() ){
+            while (contador <= 3){ // Pega todos os elementos
                 System.out.println(temp.getConteudo());
                 temp = temp.getProximo();
-                contador++;
+                if(temp == aux){
+                    contador++;
+                }
             }
         }
         
