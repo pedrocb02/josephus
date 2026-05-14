@@ -190,37 +190,31 @@ public class ListaLigadaCircular<T> {
      * 
      * @Objeto removido
      */
-    public T removerMeio(No atual){
-        No ant = getInicio();
-        No aux = getInicio();
-        T obj = null;
-        if(!estaVazia()){
-            if(getInicio() == getFim()){
-                setInicio(null);
-                setFim(null);
+    public T removerMeio(No atual) {
+        if (estaVazia() || atual == null) return null;
+    
+        T obj = (T) atual.getConteudo();
+    
+        if (getInicio() == getFim() && atual == getInicio()) { // Só tem 1 nó
+            setInicio(null);
+            setFim(null);
+        } else {
+            No anterior = getInicio();
+            // Percorre até achar quem aponta para o "atual"
+            while (anterior.getProximo() != atual) {
+                anterior = anterior.getProximo();
             }
-            else{
-                while(true){
-                    ant = ant.getProximo();
-                    if(ant == atual){
-                        if(ant == getInicio()){
-                            aux.setProximo(getFim());
-                            break;
-                        }
-                        if(ant == getFim()){
-                            aux.setProximo(getInicio());
-                            break;
-                        }
-                        aux.setProximo(atual.getProximo());
-                        break; 
-                    }
-                    aux = aux.getProximo();
-                }
-
-            }
-            setQtdNos(getQtdNos() - 1);
-            obj = (T)aux.getConteudo();
+    
+            anterior.setProximo(atual.getProximo()); // Pula o atual
+    
+            if (atual == getInicio()) setInicio(atual.getProximo());
+            if (atual == getFim()) setFim(anterior);
+            
+            // ESSENCIAL PARA CIRCULAR: Garante que o fim sempre aponte para o início
+            getFim().setProximo(getInicio());
         }
+    
+        setQtdNos(getQtdNos() - 1);
         return obj;
     }
     /**
@@ -234,7 +228,9 @@ public class ListaLigadaCircular<T> {
             while (contador <= getQtdNos()){ // Pega todos os elementos
                 if(temp.getProximo() != null)
                     // Separa com virgula
-                    valores += temp.getConteudo() + ","; 
+                    if(contador < getQtdNos()){
+                        valores += temp.getConteudo() + ","; 
+                    }
                 else
                     // O ultimo nao tem virgula
                     valores += temp.getConteudo() + ""; 

@@ -1,4 +1,4 @@
-
+import java.util.Scanner;
 /**
  * Escreva uma descrição da classe App aqui.
  * 
@@ -8,12 +8,45 @@
 public class App
 {
     public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
         ListaLigadaCircular lista = new ListaLigadaCircular();
-        int total = 15;
+        int total = 0;
+        do{
+            try{
+                System.out.println("Digite o total: ");
+                total = sc.nextInt();
+                if(!(total <= 0)){
+                   break; 
+                }
+                else{
+                   System.out.println("Valor inválido");
+                }
+            }catch(Exception e){
+                System.out.println("Valor inválido");
+                sc.nextLine();
+            }
+        }while(true);
+        int passo = 0;
+        do{
+            try{
+                System.out.println("Digite o passo: ");
+                passo = sc.nextInt();
+                if(!(total <= 0)){
+                   break; 
+                }
+                else{
+                   System.out.println("Valor inválido");
+                }
+            }catch(Exception e){
+                System.out.println("Valor inválido");
+                sc.nextLine();
+            }
+        }while(true);
+        
         for(int i = 1; i <= total; i++){
             lista.inserirFim(i);
         }
-        int passo = 2;
+        
         int contador;
         No aux = lista.getInicio();
         No aux2;
@@ -23,7 +56,7 @@ public class App
             for(contador = 1; contador < passo; contador++){
                 aux = aux.getProximo();
             }
-            System.out.println("removido: " + aux.getConteudo());
+            //System.out.println("removido: " + aux.getConteudo());
             aux2 = aux.getProximo();
             lista.removerMeio(aux);
             aux = aux2;
