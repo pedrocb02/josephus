@@ -23,7 +23,7 @@ public class App
                 }
             }catch(Exception e){
                 System.out.println("Valor inválido");
-                sc.nextLine();
+                sc.nextLine();//oi
             }
         }while(true);
         int passo = 0;
