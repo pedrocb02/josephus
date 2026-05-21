@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=AppGrafico
+comment1.params=palco
+comment1.target=void\ start(javafx.stage.Stage)
+comment2.params=total\ passo
+comment2.target=void\ iniciarJosephus(int,\ int)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
