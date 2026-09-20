@@ -14,7 +14,7 @@ O Problema de Josephus consiste em um grupo de pessoas dispostas em um círculo.
 
 A solução foi implementada utilizando:
 
-*   ![Linguagem](https://img.shields.io/badge/Linguagem-C%2B%2B%20%2F%20Python%20%2F%20Java-blue?style=for-the-badge) *(Ajuste para a linguagem utilizada, ex: C++, Python, C)*
+*   ![Linguagem](https://img.shields.io/badge/Linguagem-C%2B%2B%20%2F%20Python%20%2F%20Java-blue?style=for-the-badge)
 
 ---
 
